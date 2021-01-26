@@ -11,4 +11,28 @@ function createStarTrek() {
     return starTrek
 }
 
-console.log(display(createStarTrek()))
+function is_palindrome(s) {
+    s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+
+    let stack = new Stack()
+
+    for (let i = 0; i < s.length; i++) {
+        stack.push(s[i])
+    }
+
+    let reverse = ""
+
+    while(!isEmpty(stack)) {
+        reverse = reverse + stack.pop()
+    }
+
+    if (s === reverse) {
+        return true
+    }
+    return false
+}
+
+console.log(is_palindrome("dad"));
+console.log(is_palindrome("A man, a plan, a canal: Panama"));
+console.log(is_palindrome("1001"));
+console.log(is_palindrome("Tauhida"));
