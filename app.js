@@ -1,4 +1,4 @@
-const Stack = require('./stack')
+const {Stack, peek, isEmpty, display} = require('./stack')
 
 function createStarTrek() {
     let starTrek = new Stack()
@@ -8,8 +8,7 @@ function createStarTrek() {
     starTrek.push("McCoy")
     starTrek.push("Scotty")
 
-    console.log(starTrek)
     return starTrek
 }
 
-createStarTrek()
+console.log(display(createStarTrek()))

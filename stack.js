@@ -27,4 +27,24 @@ class Stack {
     }
 }
 
-module.exports = Stack
+function peek(stack) {
+    return stack.top.data
+}
+
+function isEmpty(stack) {
+    if (stack.top === null) {
+        return true
+    }
+    return false
+}
+
+function display(stack) {
+    let currNode = stack.top
+
+    while (currNode.next !== null) {
+        console.log(currNode)
+        currNode = currNode.next
+    }
+}
+
+module.exports = {Stack, peek, isEmpty, display}
