@@ -22,9 +22,24 @@ class Stack {
 
     pop() {
         const node = this.top;
-        this.top = node.next;
+        if (node === null) {
+            this.top === null
+            return null
+        } else {
+            this.top = node.next
+        }
         return node.data;
     }
+}
+
+function size(stack) {
+    let count = 0;
+    let node = stack.top;
+    while(node !== null) {
+        count++
+        node = node.next
+    }
+    return count
 }
 
 function peek(stack) {
@@ -41,10 +56,20 @@ function isEmpty(stack) {
 function display(stack) {
     let currNode = stack.top
 
+    if (currNode === null) {
+        console.log(null)
+        return
+    }
+
+    // if (currNode.next === null) {
+    //     console.log(currNode)
+    //     return
+    // }
+
     while (currNode.next !== null) {
         console.log(currNode)
         currNode = currNode.next
     }
 }
 
-module.exports = {Stack, peek, isEmpty, display}
+module.exports = {Stack, peek, isEmpty, display, size}
