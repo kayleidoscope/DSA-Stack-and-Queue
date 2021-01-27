@@ -43,6 +43,9 @@ function size(stack) {
 }
 
 function peek(stack) {
+    if (!stack.top) {
+        return null
+    }
     return stack.top.data
 }
 
@@ -61,10 +64,10 @@ function display(stack) {
         return
     }
 
-    // if (currNode.next === null) {
-    //     console.log(currNode)
-    //     return
-    // }
+    if (currNode.next === null) {
+        console.log(currNode)
+        return
+    }
 
     while (currNode.next !== null) {
         console.log(currNode)
