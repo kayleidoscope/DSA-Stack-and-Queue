@@ -45,6 +45,22 @@ class SingleQueue {
     }
 }
 
+function size(queue) {
+    let count = 0
+    let node = queue.first
+
+    if (!node) {
+        return count
+    }
+
+    while (node !== null) {
+        count++
+        node = node.next
+    }
+
+    return count
+}
+
 function peek(queue) {
     return queue.first.value
 }
@@ -57,19 +73,23 @@ function isEmpty(queue) {
 }
 
 function display(queue) {
-
     let node = queue.first
-    if (node.next === null) {
-        console.log(node.value)
+
+    if (!node) {
+        console.log("The queue is empty.")
+        return
     }
 
-    while(node.next !== null) {
-        console.log(node.value)
+    if (node.next === null) {
+        console.log(`Current: ${node.value} Next: ${node.next ? node.next.value : null}`)
+    }
+
+    while(node.next!==null) {
+        console.log(`Current: ${node.value} Next: ${node.next.value}`)
         node = node.next
     }
-
-    console.log(node.value)
+    console.log(`Current: ${node.value} Next: ${node.next ? node.next.value : null}`)
     return ""
 }
 
-module.exports = {SingleQueue, peek, isEmpty, display}
+module.exports = {SingleQueue, size, peek, isEmpty, display}
