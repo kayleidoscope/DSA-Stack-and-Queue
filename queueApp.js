@@ -70,4 +70,55 @@ function letsDance(womenLine, menLine) {
     console.log(display(menLine), display(womenLine))
 }
 
-letsDance(womenLine, menLine)
+// letsDance(womenLine, menLine)
+
+//The Ophidian Bank
+
+function newCustomerId() {
+    const idNumber = Math.floor(Math.random() * 100000);
+    return idNumber
+}
+
+function randomTime() {
+    const ms = Math.floor(Math.random() * 15000);
+    return ms
+}
+
+const queue = new SingleQueue()
+
+function ophidianBank() {
+    const firstCustomer = newCustomerId()
+    queue.enqueue(firstCustomer)
+    console.log(`Customer ${firstCustomer} joined the queue.`)
+
+    let newCustomerTime = Math.floor(Math.random() * 30000);
+    let tellerTime = Math.floor(Math.random() * 30000);
+
+    setInterval(() => {
+        const customer = newCustomerId()
+        queue.enqueue(customer)
+        console.log(`Customer ${customer} joined the queue.`)
+    }, 10000);
+
+    
+    setInterval(() => {
+        const num = Math.floor(Math.random() * 4);
+        console.log(num)
+        if (num === 1 || num === 2 || num === 0) {
+            const lucky = queue.dequeue()
+            console.log(`Customer ${lucky} is leaving.`)
+        }
+        if (num === 3) {
+            const unlucky = queue.dequeue()
+            queue.enqueue(unlucky)
+            console.log(`Customer ${unlucky} had to go to the end of the line.`)
+        }
+    }, 10000);
+
+    setInterval(() => {
+        display(queue)
+        return
+    }, 150000);
+}
+
+ophidianBank()
